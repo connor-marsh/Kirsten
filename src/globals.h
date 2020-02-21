@@ -43,7 +43,7 @@ pot          ArmPot(Brain.ThreeWirePort.H);
 // ENCODER VALUES
 // (Higher numbers are lower to the ground)
 int armHeight = 0;
-int minHeight = 195;
+int minHeight = 199;
 int maxHeight = 120;
 
 double driveEncoder = 0;
@@ -65,6 +65,7 @@ double currentHeight() {
 int toDo = 3;
 
 int controlMode = 3;
+bool arcade = true;
 
 // 1 is start with preload red   2 is preload blue
 int autoRoutine = 0;

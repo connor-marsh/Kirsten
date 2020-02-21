@@ -170,8 +170,28 @@ void teleop() {
     int armPower = 0;
     double trackPower = 0;
     double slapPower = 0;
-    double leftPower = Driver.Axis3.value()*0.8;
-    double rightPower = Driver.Axis2.value()*0.8;
+    double leftPower;
+    double rightPower;
+    if (arcade) {
+      leftPower = Driver.Axis3.value() + Driver.Axis1.value();
+      rightPower = Driver.Axis3.value() + -Driver.Axis1.value();
+      if (leftPower > 127) {
+        leftPower = 127;
+      }
+      if (leftPower < -127) {
+        leftPower = -127;
+      }
+      if (rightPower > 127) {
+        rightPower = 127;
+      }
+      if (rightPower < -127) {
+        rightPower = -127;
+      }
+    }
+    else {
+      leftPower = Driver.Axis3.value()*0.8;
+      rightPower = Driver.Axis2.value()*0.8;
+    }
 
     if (abs(leftPower) < 10) {
       leftPower = 0;
@@ -319,9 +339,9 @@ void teleop() {
       if (ArmPot.value(rotationUnits::deg) < pctHeight(100) && armPower > 1) {
         ArmMotor.stop();
       }
-      else if (ArmPot.value(rotationUnits::deg) > pctHeight(0) && armPower < -1) {
-        ArmMotor.stop();
-      }
+      // else if (ArmPot.value(rotationUnits::deg) > pctHeight(0) && armPower < -1) {
+      //   ArmMotor.stop();
+      // }
       else if (ArmMotor.isSpinning() == 0) {
         if (abs(armPower) < 10) {
           ArmMotor.stop();
