@@ -43,7 +43,7 @@ pot          ArmPot(Brain.ThreeWirePort.H);
 // ENCODER VALUES
 // (Higher numbers are lower to the ground)
 int armHeight = 0;
-int minHeight = 199;
+int minHeight = 205;
 int maxHeight = 120;
 
 double driveEncoder = 0;

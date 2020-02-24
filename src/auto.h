@@ -308,13 +308,13 @@ void initRobot() {
   SlapMotor.rotateFor(200, timeUnits::msec, -100, velocityUnits::pct);
   // Raise slap and arm
   SlapMotor.startRotateFor(directionType::fwd, 200, rotationUnits::deg, 60, velocityUnits::pct);
-  ArmMotor.rotateFor(directionType::fwd, 350, rotationUnits::deg, 100, velocityUnits::pct);
+  ArmMotor.rotateFor(directionType::fwd, 200, rotationUnits::deg, 100, velocityUnits::pct);
   // Lower arm
   //ArmMotor.rotateFor(directionType::rev, 50, rotationUnits::deg, 100, velocityUnits::pct);
-  ArmMotor.startRotateFor(directionType::rev, 230, rotationUnits::deg, 100, velocityUnits::pct);
+  ArmMotor.startRotateFor(directionType::rev, 200, rotationUnits::deg, 100, velocityUnits::pct);
 
   // Put slap back
-  SlapMotor.startRotateFor(directionType::rev, 200, rotationUnits::deg, 60, velocityUnits::pct);
+  SlapMotor.startRotateFor(directionType::rev, 230, rotationUnits::deg, 60, velocityUnits::pct);
   //ArmMotor.rotateFor(directionType::fwd, -60, rotationUnits::deg);
   robotInitialized = true;
 }
@@ -323,9 +323,10 @@ void initRobot() {
 
 void redDumpSimple() {
   // Get cubes in a line
-  
+  this_thread::sleep_for(300);
   driveForDistance(50, 0.5);
   this_thread::sleep_for(200);
+  ArmMotor.stop();
   RightTrackMotor.startRotateFor(2.8, rotationUnits::rev, 70, velocityUnits::pct);
   LeftTrackMotor.rotateFor(2.8, rotationUnits::rev, 70, velocityUnits::pct);
 
